@@ -44,8 +44,5 @@ $(document).ready(function(){
     
     //global variables
     const stockList = ['GOOG','FB','AMZN','SHAK','SNAP', 'SWK'];
-    renderButtons();
-
-    //ajax global variables
-    
+    renderButtons();   
 });
