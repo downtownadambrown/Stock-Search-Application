@@ -27,10 +27,11 @@ $(document).ready(function(){
            
 
             let newslistHTML = ``;
-
+            
             for (let i = 0; i < companyNews.length; i++){
                 newslistHTML += `<div class="news" id="news${i}></div>`;
             }
+            //finalize newslistHTML output to main col
 
         });
     };
