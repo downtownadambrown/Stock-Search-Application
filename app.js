@@ -7,25 +7,26 @@ $(document).ready(function(){
     const request = function(){
         ticker = $(this).text();
 
-        const queryURL = `https://api.iextrading.com/1.0/stock/${ticker}/batch?types=company,quote,logo,news`; 
+        //Added security to the queryURL
+        const queryURL = `https://api.iextrading.com/1.0/stock/${encodeURIComponent(ticker)}/batch?types=company,quote,logo,news`; 
 
         $.ajax({
             url: queryURL,
             type: 'GET'
         }).then(function(response){
             console.log(response);
-            const cName = response.company.companyName;
-            const cLogo = response.logo.url;
-            const cPrice = response.quote.latestPrice;
-            const cNews = response.news;
-            const cTicker = response.company.symbol
+            const companyName = response.company.companyName;
+            const companyLogo = response.logo.url;
+            const companyPrice = response.quote.latestPrice;
+            const companyNews = response.news;
+            const companyTicker = response.company.symbol
             
-            const headerHTML = `<h1>(${cTicker})${cName}</h1><img id="cLogo" class="clearfix" src="${cLogo}">`;
+            const headerHTML = `<h1>(${companyTicker})${companyName}</h1><img id="cLogo" class="clearfix" src="${companyLogo}">`;
             $('.header').html(headerHTML);
 
-            const newslistHTML = ``;
+            let newslistHTML = ``;
 
-            for (let i = 0; i < cNews.length; i++){
+            for (let i = 0; i < companyNews.length; i++){
                 newslistHTML += `<div id="news${i}></div>`;
             }
 

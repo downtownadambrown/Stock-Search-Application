@@ -13,11 +13,14 @@ html, body{
 
 .buttonNav{
     width: 100%;
+    
 }
 
 .buttonList{
     width: 75%;
     margin: 0 auto;
+    background-color: rgba(107, 225, 255, 0.671);
+    border-radius: 5px;
 }
 
 .content{
