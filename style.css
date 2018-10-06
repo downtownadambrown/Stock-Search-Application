@@ -1,0 +1,75 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    font-family: 'Bree Serif', serif;
+
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.buttonNav{
+    width: 100%;
+}
+
+.buttonList{
+    width: 75%;
+    margin: 0 auto;
+}
+
+.content{
+    width: 100%;
+    height: 80%;
+
+}
+
+button{
+    height: 40px;
+    width: 80px;
+    margin: 10px;
+    padding: 10px;
+    border-style: solid black;
+    border-radius: 3px;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    width: 75%;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.body{
+    width: 75%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#cLogo{
+    height: 30px;
+    width: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    float: left;
+    margin: 4px 0px 4px 0px;
+}
+
+h1 {
+    
+    font-size: 24px; 
+    font-weight: bold;
+    padding: 15px;
+    letter-spacing: 0.1em;
+}
