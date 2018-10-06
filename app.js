@@ -21,13 +21,15 @@ $(document).ready(function(){
             const companyNews = response.news;
             const companyTicker = response.company.symbol
             
-            const headerHTML = `<h1>(${companyTicker})${companyName}</h1><img id="cLogo" class="clearfix" src="${companyLogo}">`;
-            $('.header').html(headerHTML);
+            const companyHTML = `<img class="companyLogo m-3" src="${companyLogo}"><h2>(${companyTicker})${companyName}</h2>`;
+            
+            $('.companyInfo').html(companyHTML);
+           
 
             let newslistHTML = ``;
 
             for (let i = 0; i < companyNews.length; i++){
-                newslistHTML += `<div id="news${i}></div>`;
+                newslistHTML += `<div class="news" id="news${i}></div>`;
             }
 
         });
@@ -37,7 +39,7 @@ $(document).ready(function(){
         clearButtons();
 
         for (let i = 0; i < stockList.length; i++){
-            const buttonHTML = $(`<button class='button' id='button${i}'>${stockList[i].toUpperCase()}</button>`);
+            const buttonHTML = $(`<button type='button' class='btn btn-dark m-2' id='button${i}'>${stockList[i].toUpperCase()}</button>`);
             buttonHTML.on(`click`, request);
             $(`.buttonList`).append(buttonHTML);
         }
