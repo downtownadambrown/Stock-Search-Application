@@ -10,3 +10,4 @@ To finish this task, it will call the API and use JavaScript and jQuery to chang
 * ES6 vanilla Javascript
 * jQuery primarily for AJAX handling
 * RESTful web service (NY Times public API)
+* BootPopUp.js - https://github.com/rigon/bootpopup
