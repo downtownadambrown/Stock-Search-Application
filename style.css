@@ -2,7 +2,8 @@ html, body{
     height: 100%;
     width: 100%;
     font-family: 'Bree Serif', serif;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .container{
@@ -16,11 +17,27 @@ img.companyLogo{
     float: right;
 }
 
-.col-9{
+.col-9 {
     border-radius: 5px;
 }
 
-#footerCaption{
-    align-content: center;
-    justify-content: center;
+.companyNews{
+    width: 100%;
+
 }
+
+#addButton{
+    position: absolute;
+    right:-35px;
+    bottom:15px;
+
+}
+
+.news {
+    height: 100px;
+}
+
+.companySummary {
+    height: 100px;
+}
+
