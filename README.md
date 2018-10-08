@@ -1,4 +1,5 @@
-# Stock Search Application (Github Pages Link: https://github.com/downtownadambrown/Stock-Search-Application)
+# Stock Search Application 
+* (Github Pages Link: https://downtownadambrown.github.io/Stock-Search-Application)
 
 For this project, I was tasked with creating a stock search web application for my client.  This application uses the iexTrading API to make a dynamic web page that populates with cryptocurrency information of the user's choice. 
 
