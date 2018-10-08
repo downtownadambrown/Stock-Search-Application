@@ -6,7 +6,7 @@ To finish this task, it will call the API and use JavaScript and jQuery to chang
 
 # Tools / Libraries used
 * HTML5
-* CSS3 / SASS
+* CSS3, Bootstrap, SASS
 * ES6 vanilla Javascript
 * jQuery primarily for AJAX handling
 * RESTful web service (NY Times public API)
