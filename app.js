@@ -22,7 +22,7 @@ const request = function () {
         const companySummaryText = response.company.description;
 
         //Set the company info header
-        const companyHTML = $(`<img class="companyLogo p-3" src="${companyLogo}"><h2>(${companyTicker})${companyName}</h2>`);
+        const companyHTML = $(`<img class="companyLogo p-3" src="${companyLogo}"><h2>(${companyTicker})${companyName} - @$${companyPrice}/share</h2>`);
         const companySummary = `<p id="companySummary">${companySummaryText}</p>`;
         $('.companyInfo').html(companyHTML);
         $('.companyInfo').append($(companySummary))
@@ -63,12 +63,37 @@ const addCompany = function () {
             { input: { type: "text", label: "", name: "title", placeholder: "Ex: Google is GOOG"} }],
         ok: function (data, e) {
             let companyInput = data.title.toUpperCase();
-            stockList.push(companyInput);
-            renderButtons();
+            
+            const queryURL = `https://api.iextrading.com/1.0/ref-data/symbols`;
+
+            $.ajax({
+                url: queryURL,
+                type: 'GET'
+            }).then(function(response){
+                console.log(response);
+                if (inputValidation(companyInput, response) === true){
+                    stockList.push(companyInput);
+                    renderButtons(); 
+                    console.log('company exists');
+                }
+                else {
+                    alert('Company data not found on the IEXTrading API');
+                }
+            });            
         },
         complete: function () { },
     });
 };
+
+const inputValidation = function(input, response){
+    for (let i = 0; i < response.length; i++) {
+        if (input.toUpperCase() === response[i].symbol) {
+            return true; //symbol is valid (exists); returns true
+        }
+    }
+
+    return false; //symbol is not valid; returns false
+}
 
 //global variables
 const stockList = ['GOOG', 'FB', 'AMZN', 'SHAK', 'SNAP', 'SWK'];
