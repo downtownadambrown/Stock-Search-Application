@@ -1,10 +1,9 @@
-
 const clearButtons = function () {
     $('button').remove();
 };
 
 const request = function () {
-    ticker = $(this).text();
+    let ticker = $(this).text();
 
     //Added security to the queryURL
     const queryURL = `https://api.iextrading.com/1.0/stock/${encodeURIComponent(ticker)}/batch?types=company,quote,logo,news`;
