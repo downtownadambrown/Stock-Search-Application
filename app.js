@@ -20,25 +20,33 @@ const request = function () {
         const companyTicker = response.company.symbol
         const companySummaryText = response.company.description;
 
-        //Set the company info header
+        //Set the company info header + logo + summary
         const companyHTML = $(`<img class="companyLogo p-3" src="${companyLogo}"><h2>(${companyTicker})${companyName} - @$${companyPrice}/share</h2>`);
-        const companySummary = `<p id="companySummary">${companySummaryText}</p>`;
+        const companySummary = $(`<p id="companySummary">${companySummaryText}</p>`);
         $('.companyInfo').html(companyHTML);
-        $('.companyInfo').append($(companySummary))
+        $('.companyInfo').append(companySummary);
 
-        //Set the company summary
-
-        //console.log(companySummary);
-        //$('.companySummary').html(companySummary);
+        // Clear company news divs
+        $(`.companyNews`).html("");
 
         //Set the company news divs
-        var currentNews = ``;
         for (let i = 0; i < companyNews.length; i++) {
-            currentNews += `<div class="news bg-secondary p-3 border-bottom" id="news${i}"></div>`;
-        }
-        //finalize newslistHTML output to main col           
-        $(`.companyNews`).html($(currentNews));
+            let newsHeadline = response.news[i].headline;
+            let newsSource = response.news[i].source;
+            let newsURL = response.news[i].url;
+            
+            let newsSummary = response.news[i].summary;
+            if (newsSummary === "No summary available.") {
+                newsSummary = "";
+            }
 
+            
+            let currentNewsDiv = $(`<div class="news bg-secondary p-3 border-bottom" id="news${i}"></div>`);
+            let currentNewsContent = $(`<h4><a href="${newsURL}">${newsHeadline}</a></h4><h5>&mdash;Source: ${newsSource}</h5><h6>${newsSummary}</h6>`);
+            
+            currentNewsDiv.append(currentNewsContent);
+            $(`.companyNews`).append(currentNewsDiv);       
+        }        
     });
 };
 
@@ -73,7 +81,6 @@ const addCompany = function () {
                 if (inputValidation(companyInput, response) === true){
                     stockList.push(companyInput);
                     renderButtons(); 
-                    console.log('company exists');
                 }
                 else {
                     alert('Company data not found on the IEXTrading API');
